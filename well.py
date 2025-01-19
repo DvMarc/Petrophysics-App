@@ -16,8 +16,20 @@ Esta aplicación permite analizar archivos de registros de pozos
 en formato LAS del campo Volve, Noruega.
 """)
 
-data_path = Path('Data/VOLVE-PETROPHYSICAL_INTERPRETATION')
-folders = [folder for folder in data_path.iterdir() if folder.is_dir()]
-folder_names = [folder.name for folder in folders]
+image = Image.open('interpretacion-de-registros.png')
+st.image(image,  use_container_width=True)
 
-folder = st.selectbox('Selecciona la carpeta', folder_names)
+st.write("""
+Permite explorar datos petrofísicos clave, como porosidad, saturación de agua y volumen de arcilla, además de visualizar gráficos 
+e información detallada sobre las características del subsuelo.
+""")
+
+
+st.write("")
+st.header("Importar archivos LAS")
+uploaded_file = st.file_uploader("Sube tu archivo LAS aquí:", type=["las"])
+
+if uploaded_file:
+    st.write("Archivo cargado: ", uploaded_file.name)
+
+
